@@ -64,11 +64,13 @@ All models were evaluated and compared using Receiver Operating Characteristic (
 
 ## Results
 
-![***Figure 1:** ROC curves of the 8 models on the test set*](images/roc_all_models.jpg "ROC curves of the 8 models on the test set")
+![](images/roc_all_models.jpg "ROC curves of the 8 models on the test set")
 
-\-
+***Figure 1:** ROC curves of the 8 models on the test set*
 
-![***Figure 2:** Decision curves of the 8 models on the test set*](images/decision_curve_all_models.jpg "Decision curves of the 8 models on the test set")
+![](images/decision_curve_all_models.jpg "Decision curves of the 8 models on the test set")
+
+***Figure 2:** Decision curves of the 8 models on the test set*
 
 Although the ROC curves of all eight models aren't close to the top-left corner of the unit square, they lie well above the diagonal line $y=x$, which corresponds to a random guessing model. This indicates that all models exhibit reasonably good classification performance on the test set. According to the decision curves, all eight models achieve higher net benefit than both the “Treat all” and “Treat none” strategies across a wide range of classification thresholds. This suggests that the models provide relatively high clinical utility on the test set.
 
@@ -83,7 +85,7 @@ Although the ROC curves of all eight models aren't close to the top-left corner 
 | SVM | 0.8427 | [0.8073, 0.8764] | 0.8271 | [0.7727, 0.8772] |
 | KNN | 0.8374 | [0.8030, 0.8720] | 0.8145 | [0.7587, 0.8694] |
 
-: ***Table 1:** Training and test AUCs with 95% bootstrap confidence intervals (CIs) for each model*
+***Table 1:** Training and test AUCs with 95% bootstrap confidence intervals (CIs) for each model*
 
 For the tree-based models (Decision Tree, Random Forest, XGBoost), the differences between the AUC values ​​on the training and test sets are relatively large, indicating overfitting. In particular, the RF and XGBoost models achieved near-perfect AUC values on the training set but noticeably lower AUC on the test set.
 
@@ -91,11 +93,13 @@ In contrast, for the Logistic Regression, Regularized Logistic Regression, GAM, 
 
 Among these five models, GAM achieved the highest test-set AUC (with AUC = 0.8476) followed closely by Logistic Regression and Regularized Logistic Regression (both with AUC = 0.8283). However, Logistic Regression remains attractive due to its simplicity and interpretability in clinical settings.
 
-![***Figure 3:** ROC curve of the Logistic Regression model on the test set*](images/roc_logistic_reg.jpg "ROC curve of the Logistic Regression model on the test set")
+![](images/roc_logistic_reg.jpg "ROC curve of the Logistic Regression model on the test set")
 
-\-
+***Figure 3:** ROC curve of the Logistic Regression model on the test set*
 
-![***Figure 4:** Decision curve of the Logistic Regression model on the test set*](images/decision_curve_logistic_reg.jpg "Decision curve of the Logistic Regression model on the test set")
+![](images/decision_curve_logistic_reg.jpg "Decision curve of the Logistic Regression model on the test set")
+
+***Figure 4:** Decision curve of the Logistic Regression model on the test set*
 
 For the Logistic Regression model, candidate optimal thresholds were computed using 3 criteria: *Maximizing Youden Index criterion, Closest to (0, 1) criterion, and Symmetry Point criterion*, yielding threshold values of 0.2932, 0.2932, and 0.3249, respectively. Among these, the threshold of 0.2932 provides the highest net benefit for the Logistic Regression model and is therefore selected as the model's final optimal classification threshold.
 
