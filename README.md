@@ -64,11 +64,11 @@ All models were evaluated and compared using Receiver Operating Characteristic (
 
 ## Results
 
-![***Figure 1:** ROC curves of the 8 models on the test set*](images/roc_all_models.jpg "ROC curves of the 8 models on the test set"){width="492"}
+![***Figure 1:** ROC curves of the 8 models on the test set*](images/roc_all_models.jpg "ROC curves of the 8 models on the test set")
 
 \-
 
-![***Figure 2:** Decision curves of the 8 models on the test set*](images/decision_curve_all_models.jpg "Decision curves of the 8 models on the test set"){width="590"}
+![***Figure 2:** Decision curves of the 8 models on the test set*](images/decision_curve_all_models.jpg "Decision curves of the 8 models on the test set")
 
 Although the ROC curves of all eight models aren't close to the top-left corner of the unit square, they lie well above the diagonal line $y=x$, which corresponds to a random guessing model. This indicates that all models exhibit reasonably good classification performance on the test set. According to the decision curves, all eight models achieve higher net benefit than both the “Treat all” and “Treat none” strategies across a wide range of classification thresholds. This suggests that the models provide relatively high clinical utility on the test set.
 
@@ -91,11 +91,11 @@ In contrast, for the Logistic Regression, Regularized Logistic Regression, GAM, 
 
 Among these five models, GAM achieved the highest test-set AUC (with AUC = 0.8476) followed closely by Logistic Regression and Regularized Logistic Regression (both with AUC = 0.8283). However, Logistic Regression remains attractive due to its simplicity and interpretability in clinical settings.
 
-![***Figure 3:** ROC curve of the Logistic Regression model on the test set*](images/roc_logistic_reg.jpg "ROC curve of the Logistic Regression model on the test set"){width="586"}
+![***Figure 3:** ROC curve of the Logistic Regression model on the test set*](images/roc_logistic_reg.jpg "ROC curve of the Logistic Regression model on the test set")
 
 \-
 
-![***Figure 4:** Decision curve of the Logistic Regression model on the test set*](images/decision_curve_logistic_reg.jpg "Decision curve of the Logistic Regression model on the test set"){width="591"}
+![***Figure 4:** Decision curve of the Logistic Regression model on the test set*](images/decision_curve_logistic_reg.jpg "Decision curve of the Logistic Regression model on the test set")
 
 For the Logistic Regression model, candidate optimal thresholds were computed using 3 criteria: *Maximizing Youden Index criterion, Closest to (0, 1) criterion, and Symmetry Point criterion*, yielding threshold values of 0.2932, 0.2932, and 0.3249, respectively. Among these, the threshold of 0.2932 provides the highest net benefit for the Logistic Regression model and is therefore selected as the model's final optimal classification threshold.
 
