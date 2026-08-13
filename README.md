@@ -4,35 +4,35 @@
 
 Diabetes mellitus is a chronic metabolic disease characterized by elevated blood glucose levels and is associated with severe long-term complications if not properly managed. Accurate and timely diagnosis is therefore essential for effective treatment and risk management.
 
-This project investigates the use of statistical and machine learning classification models to predict the presence of diabetes based on diagnostic measurements as part of my master's thesis. The task is formulated as a binary classification problem, distinguishing between individuals with and without diabetes. Multiple models — including logistic regression variants, generalized additive models (GAM), and several machine learning models — are evaluated and compared to assess their predictive performance. The code was developed and executed using RStudio.
+This project investigates the use of statistical and machine learning classification models to predict the presence of diabetes based on diagnostic measurements. The task is formulated as a binary classification problem, distinguishing between individuals with and without diabetes. Multiple models - including logistic regression variants, generalized additive models (GAM), and several machine learning models - are evaluated and compared to assess their predictive performance. The code was developed and executed using RStudio.
 
 ## Data
 
 This project uses the Pima Indians Diabetes dataset, which contains 768 observations and 9 variables, including clinical and demographic information on women of Pima Indian heritage aged 21 years and older. The dataset is publicly available at: <https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database>
 
-The response variable of interest is **Outcome**, a binary indicator representing whether an individual *has diabetes* (`1`) or *doesn't have diabetes* (`0`). All remaining variables were treated as predictors in the classification task.
+The response variable of interest is *Outcome*, a binary indicator representing whether an individual *has diabetes* (1) or *doesn't have diabetes* (0). All remaining variables were treated as predictors in the classification task.
 
-All variables in the dataset, except for "Outcome", are numerical. The "Outcome" variable is categorical and was therefore converted into a factor. The dataset was split into training and test sets using a 70:30 ratio. Standardization was performed on all numerical variables in the training set. The same scaling parameters were then applied to the test set.
+All variables in the dataset, except for Outcome, are numerical. The Outcome variable is categorical and was therefore converted into a factor. The dataset was split into training and test sets using a 70:30 ratio. Standardization was performed on all numerical variables in the training set. The same scaling parameters were then applied to the test set.
 
 ## Methods
 
 Eight statistical and machine learning models were trained:
 
--   A *Logistic Regression* model;
+- A *Logistic Regression* model;
 
--   A *Regularized Logistic Regression* model using Least Absolute Shrinkage and Selection Operator (LASSO) regularization, with the optimal value of the regularization parameter $\lambda$ determined via 10-fold cross-validation;
+- A *Regularized Logistic Regression* model using Least Absolute Shrinkage and Selection Operator (LASSO) regularization, with the optimal value of the regularization parameter $\lambda$ determined via 10-fold cross-validation;
 
--   A Logistic *Generalized Additive Model (GAM)*, with each smooth function being a cubic spline constructed from at most 15 B-splines;
+- A Logistic *Generalized Additive Model (GAM)*, with each smooth function being a cubic spline constructed from at most 15 B-splines;
 
--   A *Decision Tree* model, using Gini Index as the splitting criterion, with the Complexity Parameter (CP) set to 0.006;
+- A *Decision Tree* model, using Gini Index as the splitting criterion, with the Complexity Parameter (CP) set to 0.006;
 
--   A *Random Forest (RF)* model, comprising 500 decision trees;
+- A *Random Forest (RF)* model, comprising 500 decision trees;
 
--   An *Extreme Gradient Boosting (XGBoost)* model, with a learning rate of 0.06 and 100 boosting rounds;
+- An *Extreme Gradient Boosting (XGBoost)* model, with a learning rate of 0.06 and 100 boosting rounds;
 
--   A soft-margin *Support Vector Machine (SVM)* model, with the penalty parameter C set to 0.6;
+- A soft-margin *Support Vector Machine (SVM)* model, with the penalty parameter C set to 0.6;
 
--   A *K-Nearest Neighbors (KNN)* model, with the number of nearest neighbors set to k = 45.
+- A *K-Nearest Neighbors (KNN)* model, with the number of nearest neighbors set to k = 45.
 
 All models were evaluated and compared using Receiver Operating Characteristic (ROC) curve, Decision curve and Area Under the ROC Curve (AUC) with 95% bootstrap confidence intervals. Subsequently, the Logistic Regression model was examined in detail, and three ROC-based criteria together with the net benefit function were used to determine its optimal classification threshold.
 
@@ -44,7 +44,7 @@ All models were evaluated and compared using Receiver Operating Characteristic (
 
 #### Decision curve
 
-> ***Decision curve** is a plot of the net benefit as a function of the classification threshold and is used to evaluate the clinical utility of a binary classification model. In Decision Curve Analysis (DCA), two default treatment strategies—“Treat none” and “Treat all”—are used as reference baselines for comparison with predictive models.*
+> ***Decision curve** is a plot of the net benefit as a function of the classification threshold and is used to evaluate the clinical utility of a binary classification model. In Decision Curve Analysis (DCA), two default treatment strategies - “Treat none” and “Treat all” - are used as reference baselines for comparison with predictive models.*
 
 #### Classification threshold
 
@@ -75,7 +75,7 @@ All models were evaluated and compared using Receiver Operating Characteristic (
 Although the ROC curves of all eight models aren't close to the top-left corner of the unit square, they lie well above the diagonal line $y=x$, which corresponds to a random guessing model. This indicates that all models exhibit reasonably good classification performance on the test set. According to the decision curves, all eight models achieve higher net benefit than both the “Treat all” and “Treat none” strategies across a wide range of classification thresholds. This suggests that the models provide relatively high clinical utility on the test set.
 
 | Model | Training AUC | Training CI | Test AUC | Test CI |
-|:--:|:--:|:--:|:--:|:--:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | Logistic Regression | 0.8441 | [0.8107, 0.8771] | 0.8283 | [0.7704, 0.8788] |
 | Regularized Logistic Regression | 0.8442 | [0.8112, 0.8757] | 0.8283 | [0.7710, 0.8768] |
 | GAM | 0.8742 | [0.8403, 0.9015] | 0.8476 | [0.7926, 0.8953] |
